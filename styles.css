@@ -10,16 +10,17 @@ body {
     justify-content: center;
 }
 
-.container {
+.board {
     margin: 10px;
     padding: 20px 0;
     background-color: rgb(217, 217, 217);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
+    gap: 30px;
 }
 
-#grid-contain{
+#grid-container{
     background-color: white;
     display: grid;
     grid-template-columns: repeat(16, 1fr);
