@@ -1,30 +1,25 @@
- 
 document.addEventListener('DOMContentLoaded', ()=> {
-    // call the function
-    CreateGrid(16)
+    createGrid()
 })
 
-function CreateGrid(size) {
-     //Create a div 16x16 grid
-    const grid_size = document.querySelector('#grid-container');
+function createGrid() {
+    let rows = 16;
+    let cols = 16;
+    const grid_container = document.querySelector('#grid-container');
 
-    grid_size.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    grid_size.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    for(let i = 0; i < (rows * cols); i++) {
+        const eachDiv = document.createElement('div');
+        eachDiv.style.width = `${600 / cols}px`;
+        eachDiv.style.height = `${600 / rows}px`;
+        eachDiv.className = 'grid';
 
-    let eachSize = size * size;
-   
-    for(let i=0; i<eachSize; i++) {
-    
-        const newDiv = document.createElement('div');
-        newDiv.className = 'grid';
-        newDiv.addEventListener('mouseover', setColor);
+        eachDiv.addEventListener('mouseover', setColor);
 
-        document.querySelector('#grid-container').append(newDiv);
-        
-    } 
+        grid_container.appendChild(eachDiv);
+    }
 }
 
 function setColor() {
-    this.style.background = 'black'
+    this.style.backgroundColor = 'black';
 }
 
