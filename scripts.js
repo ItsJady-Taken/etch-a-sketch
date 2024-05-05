@@ -22,7 +22,25 @@ function createGrid(size) {
 }
 
 function setColor() {
-    this.style.backgroundColor = 'black';
+    this.style.backgroundColor = 'black'; 
+}
+
+function changeColor(color) {
+    color = prompt("Choose a color:")
+     if(color == "") {
+        alert("You didn't enter a color!")
+    }
+    else if(!isNaN(color)) {
+        alert(`${color} is not a color!`);
+    }
+    else {
+        const grids = document.querySelectorAll('.grid');;
+        grids.forEach(grid => {
+            grid.addEventListener('mouseover', ()=>{ 
+                grid.style.backgroundColor = color;
+            })     
+        });
+    } 
 }
 
 // popup 
@@ -37,6 +55,7 @@ function changeSize() {
     }
     else if(num <= 0 || num > 100) {
         alert("Only numbers between 1 and 100!")
+        return false
     }
     else{
         removeGrid();
@@ -44,11 +63,18 @@ function changeSize() {
    return createGrid(num);
 }
 
-// delete grid when user create a new grid 
+// delete grid when user create a new grid. I learn this part from others
 function removeGrid() {
     const grid_container = document.querySelector('#grid-container');
     while(grid_container.firstChild) {
         grid_container.removeChild(grid_container.firstChild);
     }
+}
+
+function resetGrid() {
+    const grids = document.querySelectorAll('.grid');;
+    grids.forEach(grid => {
+        grid.style.backgroundColor = 'white';
+    });
 }
 
