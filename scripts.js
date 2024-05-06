@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', ()=> { 
     // call function
     createGrid(16);
+    
 })
 
 // Function that create a grid of divs and an argument of 'size' to change value of square perside
@@ -43,6 +44,17 @@ function changeColor(color) {
     } 
 }
 
+function randomize() {
+    const grids = document.querySelectorAll('.grid');
+    grids.forEach(grid => {
+        const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);  
+        grid.addEventListener('mouseover', ()=> {
+            grid.style.backgroundColor = randomColor;
+        })
+    });  
+}
+
+
 // popup 
 function changeSize() {
     const num = prompt("Enter number between 1 and 100:");
@@ -72,7 +84,7 @@ function removeGrid() {
 }
 
 function resetGrid() {
-    const grids = document.querySelectorAll('.grid');;
+    const grids = document.querySelectorAll('.grid');
     grids.forEach(grid => {
         grid.style.backgroundColor = 'white';
     });
